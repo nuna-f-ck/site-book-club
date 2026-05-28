@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Книжный клуб колледжа Singularity</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>">
+
+  <meta
+    name="description"
+    content="Минималистичный сайт книжного клуба колледжа Singularity с книгами семестра, отзывами, театральной афишей и рекомендациями студентов."
+  />
+
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-content">
+      <a href="#home" class="logo" aria-label="На главную страницу">
+        <span class="logo-icon">📚</span>
+        <span>Книжный клуб</span>
+      </a>
+
+      <button class="menu-button" id="menuButton" type="button" aria-label="Открыть меню">
+        ☰
+      </button>
+
+      <nav class="main-nav" id="mainNav" aria-label="Главная навигация">
+        <a href="#home">Главная</a>
+        <a href="#about">О клубе</a>
+        <a href="#books">Книги</a>
+        <a href="#reviews">Отзывы</a>
+        <a href="#theatre">Театр</a>
+        <a href="#recommendations">Рекомендации</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero section" id="home">
+      <div class="container hero-grid">
+        <div class="hero-text">
+          <p class="section-label">Книжный клуб колледжа Singularity</p>
+          <h1>Читаем, обсуждаем и выбираем новые истории вместе</h1>
+          <p class="hero-description">
+            Это сайт книжного клуба колледжа: здесь собраны книги текущего семестра,
+            отзывы участников, театральная афиша и рекомендации студентов.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#books" class="button button-primary">Книги семестра</a>
+            <a href="#recommendations" class="button button-secondary">Предложить книгу или фильм</a>
+          </div>
+        </div>
+
+        <div class="hero-card" aria-label="Информация о встречах клуба">
+          <div class="hero-card-top">
+            <span class="badge">Следующая встреча клуба</span>
+            <span class="hero-date">28 мая</span>
+          </div>
+
+          <h2>404 кабинет — чил-зона на кампусе ЧЭМК</h2>
+          <p>
+            Обычно встречи проходят по четвергам в 15:00 в 404 кабинете. Это спокойная чил-зона
+            на кампусе колледжа, где удобно обсуждать книги, фильмы и планы клуба.
+          </p>
+
+          <div class="mini-info">
+            <div>
+              <strong>Время</strong>
+              <span>15:00</span>
+            </div>
+            <div>
+              <strong>Место</strong>
+              <span>404 кабинет</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-label">О клубе</p>
+          <h2>Что такое наш книжный клуб</h2>
+          <p>
+            Книжный клуб — это место, где студенты могут спокойно обсуждать книги,
+            делиться мнением, спорить аргументированно и находить новые идеи.
+          </p>
+        </div>
+
+        <div class="info-grid">
+          <article class="info-card">
+            <h3>Цель клуба</h3>
+            <p>
+              Читать актуальные произведения, обсуждать их без формальностей
+              и развивать умение выражать свои мысли понятно и уверенно.
+            </p>
+          </article>
+
+          <article class="info-card">
+            <h3>Формат встреч</h3>
+            <p>
+              Обычно встречаемся в 15:00 в 404 кабинете. Обсуждаем прочитанную книгу,
+              делимся впечатлениями и выбираем, что читать или смотреть дальше.
+            </p>
+          </article>
+
+          <article class="info-card">
+            <h3>Для участников</h3>
+            <p>
+              Можно приходить даже без большого читательского опыта. Главное —
+              интерес к обсуждению, уважение к чужому мнению и желание участвовать.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="books">
+      <div class="container">
+        <div class="section-heading row-heading">
+          <div>
+            <p class="section-label">Книги</p>
+            <h2>Книги этого семестра</h2>
+            <p>
+              В этом разделе собраны последние и самые актуальные книги,
+              которые клуб читал в текущем семестре.
+            </p>
+          </div>
+
+          <div class="search-box">
+            <label for="bookSearch">Поиск по книгам</label>
+            <input
+              type="search"
+              id="bookSearch"
+              placeholder="Например: Стругацкие, фантастика, Булгаков"
+            />
+          </div>
+        </div>
+
+        <div class="cards-grid" id="booksList" aria-live="polite"></div>
+
+        <p class="empty-message hidden" id="booksEmpty">
+          Ничего не найдено. Попробуйте изменить поисковый запрос.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" id="reviews">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-label">Отзывы</p>
+          <h2>Отзывы участников</h2>
+          <p>
+            Здесь можно оставить отзыв о книге, фильме, спектакле или встрече клуба.
+            Отзыв сохранится в браузере на вашем устройстве.
+          </p>
+        </div>
+
+        <div class="two-column-layout">
+          <form class="form-card" id="reviewForm" novalidate>
+            <h3>Добавить отзыв</h3>
+
+            <div class="form-group">
+              <label for="reviewName">Ваше имя</label>
+              <input
+                type="text"
+                id="reviewName"
+                name="reviewName"
+                maxlength="40"
+                placeholder="Например: Анна"
+                required
+              />
+              <small class="error-text" id="nameError"></small>
+            </div>
+
+            <div class="form-group">
+              <label for="reviewTitle">Название книги, фильма или мероприятия</label>
+              <input
+                type="text"
+                id="reviewTitle"
+                name="reviewTitle"
+                maxlength="80"
+                placeholder="Например: Мы"
+                required
+              />
+              <small class="error-text" id="titleError"></small>
+            </div>
+
+            <div class="form-group">
+              <label for="reviewRating">Оценка</label>
+              <select id="reviewRating" name="reviewRating" required>
+                <option value="">Выберите оценку</option>
+                <option value="5">5 — отлично</option>
+                <option value="4">4 — хорошо</option>
+                <option value="3">3 — нормально</option>
+                <option value="2">2 — не понравилось</option>
+                <option value="1">1 — плохо</option>
+              </select>
+              <small class="error-text" id="ratingError"></small>
+            </div>
+
+            <div class="form-group">
+              <label for="reviewText">Текст отзыва</label>
+              <textarea
+                id="reviewText"
+                name="reviewText"
+                rows="5"
+                maxlength="600"
+                placeholder="Напишите, что понравилось, что запомнилось и кому вы бы это посоветовали."
+                required
+              ></textarea>
+              <div class="textarea-footer">
+                <small class="error-text" id="textError"></small>
+                <small id="charCounter">0 / 600</small>
+              </div>
+            </div>
+
+            <button class="button button-primary full-width" type="submit">
+              Сохранить отзыв
+            </button>
+          </form>
+
+          <div class="panel-card">
+            <div class="panel-header">
+              <h3>Список отзывов</h3>
+              <button class="clear-button" id="clearReviewsButton" type="button">
+                Удалить все
+              </button>
+            </div>
+
+            <div class="items-list" id="reviewsList" aria-live="polite"></div>
+
+            <p class="empty-message" id="reviewsEmpty">
+              Пока отзывов нет. Добавьте первый отзыв через форму.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="theatre">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-label">Афиша театра</p>
+          <h2>Балеты в Чебоксарах</h2>
+          <p>
+            Обычно клуб ходит в Чувашский государственный театр оперы и балета.
+            Ниже — ближайшие балетные события, которые можно обсудить и посетить вместе.
+          </p>
+        </div>
+
+        <div class="cards-grid" id="theatreList"></div>
+      </div>
+    </section>
+
+    <section class="section" id="recommendations">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-label">Рекомендации</p>
+          <h2>Книги и фильмы от студентов</h2>
+          <p>
+            Здесь студенты могут предложить книгу или фильм для будущего обсуждения.
+            Чтобы не было спама, с одного браузера можно оставить только одну рекомендацию в месяц.
+          </p>
+        </div>
+
+        <div class="two-column-layout">
+          <form class="form-card" id="recommendationForm" novalidate>
+            <h3>Оставить рекомендацию</h3>
+
+            <p class="limit-note" id="recommendationLimitNote">
+              Вы можете оставить одну рекомендацию в этом месяце.
+            </p>
+
+            <div class="form-group">
+              <label for="recommendationName">Ваше имя</label>
+              <input
+                type="text"
+                id="recommendationName"
+                maxlength="40"
+                placeholder="Например: Максим"
+                required
+              />
+              <small class="error-text" id="recommendationNameError"></small>
+            </div>
+
+            <div class="form-group">
+              <label for="recommendationType">Тип</label>
+              <select id="recommendationType" required>
+                <option value="">Выберите тип</option>
+                <option value="Книга">Книга</option>
+                <option value="Фильм">Фильм</option>
+              </select>
+              <small class="error-text" id="recommendationTypeError"></small>
+            </div>
+
+            <div class="form-group">
+              <label for="recommendationTitle">Название</label>
+              <input
+                type="text"
+                id="recommendationTitle"
+                maxlength="80"
+                placeholder="Например: Общество мёртвых поэтов"
+                required
+              />
+              <small class="error-text" id="recommendationTitleError"></small>
+            </div>
+
+            <div class="form-group">
+              <label for="recommendationGenre">Жанр</label>
+              <input
+                type="text"
+                id="recommendationGenre"
+                maxlength="60"
+                placeholder="Например: драма, фантастика, антиутопия"
+                required
+              />
+              <small class="error-text" id="recommendationGenreError"></small>
+            </div>
+
+            <div class="form-group">
+              <label for="recommendationText">Почему стоит обсудить</label>
+              <textarea
+                id="recommendationText"
+                rows="5"
+                maxlength="500"
+                placeholder="Кратко объясните, почему эта книга или фильм подойдёт клубу."
+                required
+              ></textarea>
+              <div class="textarea-footer">
+                <small class="error-text" id="recommendationTextError"></small>
+                <small id="recommendationCharCounter">0 / 500</small>
+              </div>
+            </div>
+
+            <button class="button button-primary full-width" id="recommendationSubmitButton" type="submit">
+              Отправить рекомендацию
+            </button>
+          </form>
+
+          <div class="panel-card">
+            <div class="panel-header">
+              <h3>Предложения студентов</h3>
+              <button class="clear-button" id="clearRecommendationsButton" type="button">
+                Удалить все
+              </button>
+            </div>
+
+            <div class="items-list" id="recommendationsList" aria-live="polite"></div>
+
+            <p class="empty-message" id="recommendationsEmpty">
+              Пока рекомендаций нет. Добавьте первую книгу или фильм.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div>
+        <p class="footer-title">© 2026 Книжный клуб колледжа Singularity</p>
+      </div>
+
+      <div class="footer-contacts">
+          <a href="https://singularity.academy/college" target="_blank" rel="noopener noreferrer">
+            Официальный сайт Singularity College
+          </a>
+        </p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
